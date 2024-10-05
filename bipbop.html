@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BipBop - Distração Infinita</title>
+    <link rel="icon" href="https://i.postimg.cc/wTGNcxWF/20240913-195737.jpg" type="image">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 500px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-info {
+            position: absolute;
+            bottom: 60px;
+            left: 20px;
+            color: #fff;
+        }
+
+        .action-buttons {
+            position: absolute;
+            right: 20px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-buttons button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .action-buttons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .action-buttons button:hover {
+            transform: scale(1.2);
+        }
+
+        .follow-btn {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .follow-btn:hover {
+            background-color: #0000ff;
+        }
+
+        .barra-superior {
+            position: absolute;
+            bottom: 0;
+            width: 500px;
+            height: 70px;
+            background-color: #000;
+            z-index: 1;
+            left: 100px;
+            margin-left: -100px;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .barra-inferior {
+            position: absolute;
+            bottom: 0;
+            width: 500px;
+            height: 70px;
+            background-color: #000;
+            z-index: 1;
+            left: 100px;
+            margin-left: -100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container {
+            position: relative;
+            z-index: 0;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .action-buttons {
+            position: absolute;
+            right: 20px;
+            bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .action-buttons button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .action-buttons img {
+            width: 30px;
+            height: 30px;
+            top: -30px;
+        }
+
+        .image-info {
+            position: absolute;
+            bottom: 80px;
+            left: 20px;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .follow-btn {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .follow-btn:hover {
+            background-color: #0000ff;
+        }
+
+        .search-bar {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            height: 45%;
+            top: 13%;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .lupa {
+            width: 30px;
+            height: 30px;
+            left: 10px;
+        }
+
+        .icone {
+            width: 30px;
+            height: 30px;
+            right: 10px;
+        }
+
+        .plus-container {
+            width: 70px;
+            height: 45px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .plus-container span {
+            font-size: 30px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .HP {
+            width: 40px;
+            height: 40px;
+            left: -100px;
+        }
+
+        .perfil {
+            width: 40px;
+            height: 40px;
+            right: -100px;
+        }
+        
+        @media (max-width: 767px) {
+        
+        .search-bar {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #fff;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            height: 45%;
+            top: 13%;
+            font-size: 16px;
+            font-weight: normal;
+            right: 40px;
+        }
+        
+        .icone {
+            width: 50px;
+            height: 50px;
+            right: 50px;
+        }
+        
+        .barra-inferior {
+            width: 100%;
+        }
+        
+        .lupa {
+            right: 10px;
+        }
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="image-card">
+            <img src="https://mrwallpaper.com/images/hd/nature-phone-pond-island-g20rkv5ue9wdyet7.jpg" alt="Imagem principal" id="mainImage">
+            <div class="image-info">
+                <h3>@kauandreyluis <button class="follow-btn">SEGUIR</button></h3>
+                <p>Primeira imagem oficial da plataforma chamada BipBop</p>
+            </div>
+            <div class="action-buttons">
+                <button class="heart-btn" onclick="toggleHeart()">
+                <img src="https://i.postimg.cc/vmRJzTjD/20240912-214858.png" alt="Coraçãozinho" id="heartIcon">
+                </button>                
+                <button class="comment-btn">
+                <img src="https://i.postimg.cc/sDLdMw4Y/20240912-220224.png" alt="Comentário">
+                </button>
+                <button class="share-btn">
+                <img src="https://i.postimg.cc/hP9xnk8m/20240912-000556.png" alt="Compartilhar">
+                </button>
+                <button class="save-btn">
+                <img src="https://i.postimg.cc/KYdvRzx8/20240912-000858.png" alt="Salvar">
+                </button>
+            </div>
+            <div class="barra-superior">
+                <img class="icone" src="https://i.postimg.cc/3xCwccCb/20240916-145130.jpg" alt="Icone">
+                <input type="text" class="search-bar" placeholder="Procurar">
+                <img class="lupa" src="https://cdn-icons-png.flaticon.com/512/2866/2866321.png" alt="Lupa">
+            </div>
+            <div class="barra-inferior">
+                <img class="HP" src="https://static.vecteezy.com/ti/vetor-gratis/p1/22013913-casa-icone-ilustracao-imagem-vetor.jpg" alt="Home Page">
+                <div class="plus-container">
+                    <span>+</span>
+                    </div>
+                <img class="perfil" src="https://w7.pngwing.com/pngs/410/591/png-transparent-computer-icons-user-profile-avatar-icon-artwork-user-symbol.png" alt="Perfil">
+                </div>
+            </div>                        
+        </div>
+    </div>
+    <script>
+let imageIndex = 0;
+const images = [
+    "https://wallpaperbat.com/img/646147-peaceful-nature-iphone-wallpaper.jpg",
+    "https://e0.pxfuel.com/wallpapers/194/673/desktop-wallpaper-light-green-tree-grass-lockscreen-android-thumbnail.jpg",
+    "https://wallpapercave.com/wp/wp6835927.jpg",
+    "https://e1.pxfuel.com/desktop-wallpaper/59/92/desktop-wallpaper-720x1280-backgrounds-huawei-enjoy-9e.jpg",
+    "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTEwL3Jhd3BpeGVsX29mZmljZV8yOF9waG90b19vZl9vYWtfdHJlZV9sZWF2ZXNfaW5fYXV0dW1uLV9zdW5ueV9nb181OTk3NzJmMC1lZGU4LTQxZmQtYWUyYi1lOTFhZTRmYzZjMGUtYl8xLmpwZw.jpg",
+    "https://i.pinimg.com/originals/0e/2a/25/0e2a25bbe6db3beca93acb2cc5ab6c58.jpg",
+    "https://w0.peakpx.com/wallpaper/917/343/HD-wallpaper-nature-night.jpg",
+    "https://wallpapercave.com/wp/wp7909172.jpg",
+    "https://w0.peakpx.com/wallpaper/393/664/HD-wallpaper-summer-mountains-look-nice.jpg",
+    "https://c1.wallpaperflare.com/preview/280/222/416/spring-flowers-kirch-blossoms-cherry.jpg",
+    "https://i.pinimg.com/736x/dd/f6/cc/ddf6cc8253f75a7cb1b082356f402cf0.jpg",
+    "https://w0.peakpx.com/wallpaper/116/427/HD-wallpaper-iphone-14-nature-in-summer-thumbnail.jpg",
+    "https://e0.pxfuel.com/wallpapers/636/858/desktop-wallpaper-summer-forest-trees-grass-green-sun-glare-iphone.jpg",
+    "https://i.pinimg.com/736x/23/69/c5/2369c5d0ceedeca902d52f4227ad41cd.jpg",
+    "https://wallpaper.forfun.com/fetch/52/52e8c91f11de22ea42d0404ebe304d3a.jpeg",
+    "https://i.pinimg.com/736x/3f/e0/9f/3fe09fd880400745f0601d2daa8edfb6.jpg",
+    "https://i.pinimg.com/736x/23/ea/ae/23eaae210f2da34fbf429d88c0a3d448.jpg",
+    "https://m.media-amazon.com/images/I/91fm6PXDm-L.png",
+    "https://wallpaper.forfun.com/fetch/ec/ec6b003baecc72d15ef39a17193e1a98.jpeg",
+    "https://e1.pxfuel.com/desktop-wallpaper/50/511/desktop-wallpaper-japanese-cherry-blossom-iphone-sakura-mobile-thumbnail.jpg",
+];
+const imageElement = document.getElementById("mainImage");
+
+let touchStartX = 0;
+let touchEndX = 0;
+let heartToggled = false;
+const heartButton = document.querySelector('.heart-btn img');
+const followButton = document.querySelector('.follow-btn');
+let following = false;
+
+function loadNextImage() {
+    imageIndex = (imageIndex + 1) % images.length;
+    imageElement.src = images[imageIndex];
+}
+
+function loadPreviousImage() {
+    imageIndex = (imageIndex - 1 + images.length) % images.length;
+    imageElement.src = images[imageIndex];
+}
+function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+
+        loadNextImage();
+    } else if (touchEndX - touchStartX > 50) {
+
+        loadPreviousImage();
+    }
+}
+
+document.body.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+});
+
+document.body.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+document.body.addEventListener("wheel", (event) => {
+    if (event.deltaY < 0) {
+        loadPreviousImage();
+    } else {
+        loadNextImage();
+    }
+});
+
+document.querySelector('.heart-btn').addEventListener('click', () => {
+    if (!heartToggled) {
+        heartButton.src = "https://i.postimg.cc/0jH3JyDk/20240912-215317.png";
+    } else {
+        heartButton.src = "https://i.postimg.cc/vmRJzTjD/20240912-214858.png";
+    }
+    heartToggled = !heartToggled;
+});
+
+followButton.addEventListener('click', () => {
+    if (!following) {
+        followButton.style.backgroundColor = '#0000ff';
+        followButton.textContent = 'SEGUINDO';
+    } else {
+        followButton.style.backgroundColor = '';
+        followButton.textContent = 'SEGUIR';
+    }
+    following = !following;
+});
+    </script>
+</body>
+</html>
